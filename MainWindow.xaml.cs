@@ -17,13 +17,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using The_App_for_students.Class;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography.X509Certificates;
 
 namespace The_App_for_students
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window 
     {
         public MainWindow()
         {
@@ -42,9 +43,19 @@ namespace The_App_for_students
             command.Parameters.Add("@up", MySqlDbType.VarChar).Value = password;
             adapter.SelectCommand = command;
             adapter.Fill(table);
-            if(table.Rows.Count > 0) {MessageBox.Show("Authentification succeed");}
+            if (table.Rows.Count > 0) { MessageBox.Show("Authentification succeed"); }
             else { MessageBox.Show("Authentification failed"); }
         }
+
+        private void registPage_Click(object sender, RoutedEventArgs e)
+        {
+            PageRegist pageRegist = new PageRegist();
+            pageRegist.Show();
+        }
     }
+          
+
+        
+    
 }
  
